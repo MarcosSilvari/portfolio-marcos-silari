@@ -1,4 +1,4 @@
-# 🌌 Portfólio — Marcos Silari
+# 🌌 Portfólio — Marcos Silvari 
 
 Portfólio pessoal desenvolvido por **Marcos Silari**, estudante de **Análise e Desenvolvimento de Sistemas (ADS)** na **Cruzeiro do Sul**. O site reúne projetos práticos desenvolvidos ao longo do curso, com um visual escuro e neon (tons de roxo/magenta) e efeitos de brilho ao interagir com a interface.
 
