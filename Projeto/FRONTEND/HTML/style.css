@@ -1,0 +1,342 @@
+/* ===== Reset básico ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Fundo estrelado (substitui o background-color do body) ===== */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f0eaf5;
+    line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
+    background-color: #0a0316;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(160, 32, 240, 0.25), transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(225, 78, 255, 0.2), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(80, 6, 87, 0.4), transparent 50%),
+        linear-gradient(180deg, #0a0316 0%, #14071a 50%, #0a0316 100%);
+}
+
+/* ===== Camada de estrelas (pontinhos brilhantes) ===== */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image:
+        radial-gradient(2px 2px at 10% 15%, #ffffff 100%, transparent 0),
+        radial-gradient(1.5px 1.5px at 30% 40%, #e14eff 100%, transparent 0),
+        radial-gradient(2px 2px at 50% 10%, #ffffff 100%, transparent 0),
+        radial-gradient(1px 1px at 70% 60%, #ffffff 100%, transparent 0),
+        radial-gradient(2px 2px at 85% 25%, #e14eff 100%, transparent 0),
+        radial-gradient(1.5px 1.5px at 15% 70%, #ffffff 100%, transparent 0),
+        radial-gradient(1px 1px at 40% 85%, #ffffff 100%, transparent 0),
+        radial-gradient(2px 2px at 60% 50%, #ffffff 100%, transparent 0),
+        radial-gradient(1.5px 1.5px at 90% 75%, #e14eff 100%, transparent 0),
+        radial-gradient(1px 1px at 25% 90%, #ffffff 100%, transparent 0),
+        radial-gradient(2px 2px at 95% 45%, #ffffff 100%, transparent 0),
+        radial-gradient(1.5px 1.5px at 5% 50%, #ffffff 100%, transparent 0);
+    background-repeat: repeat;
+    background-size: 100% 100%;
+    animation: piscar 4s ease-in-out infinite alternate;
+    opacity: 0.8;
+}
+
+@keyframes piscar {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== Header e navegação ===== */
+header {
+    background-color: rgba(20, 7, 26, 0.15);
+    color: #fff;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    cursor: pointer;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+header:hover,
+header.ativo {
+    background-color: #14071a;
+    border-bottom: 1px solid #a020f0;
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
+}
+
+header h1 {
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: #e14eff;
+    text-shadow: 0 0 8px rgba(225, 78, 255, 0.6);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #f0eaf5;
+    text-decoration: none;
+    font-size: 21px;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+nav ul li a:hover {
+    color: #e14eff;
+    text-shadow: 0 0 10px rgba(225, 78, 255, 0.9);
+}
+
+/* ===== Botões (gerais) ===== */
+button {
+    background-color: transparent;
+    color: #e14eff;
+    border: 1px solid #e14eff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background-color: #e14eff;
+    color: #0a0a0f;
+    box-shadow: 0 0 15px rgba(225, 78, 255, 0.8);
+}
+
+/* ===== Conteúdo principal ===== */
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+section h2 {
+    color: #e14eff;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #a020f0;
+    padding-bottom: 8px;
+    text-shadow: 0 0 6px rgba(225, 78, 255, 0.4);
+}
+
+.apresentacao p {
+    font-size: 16px;
+    color: #cfc4d9;
+}
+
+.nome-destaque {
+    color: #e14eff;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(225, 78, 255, 0.7);
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.nome-destaque:hover {
+    color: #ff8ef9;
+    text-shadow: 0 0 16px rgba(225, 78, 255, 1), 0 0 30px rgba(160, 32, 240, 0.6);
+}
+
+/* ===== Lista de projetos ===== */
+.projetos ul {
+    list-style: none;
+}
+
+.projetos > ul > li {
+    font-weight: bold;
+    font-size: 18px;
+    color: #ff6ec7;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+}
+
+.projetos h1 {
+    font-size: 22px;
+    margin: 10px 0;
+    color: #f0eaf5;
+}
+
+/* ===== Blocos de cada projeto ===== */
+.secao {
+    background-color: #160a1f;
+    border: 1px solid #4b0e63;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.secao:hover {
+    border-color: #e14eff;
+    box-shadow: 0 0 20px rgba(225, 78, 255, 0.35);
+}
+
+.secao h2 {
+    font-size: 17px;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    text-shadow: none;
+}
+
+/* ===== Código ===== */
+pre {
+    background-color: #0d0611;
+    color: #d9c6ea;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+    border: 1px solid #2e0f3d;
+}
+
+/* ===== Resultados exibidos em <p> ===== */
+.resultado {
+    background-color: #1a0e24;
+    color: #f0eaf5;
+    border-left: 4px solid #e14eff;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border-radius: 4px;
+    transition: box-shadow 0.25s ease;
+}
+
+.resultado:hover {
+    box-shadow: 0 0 12px rgba(225, 78, 255, 0.5);
+}
+
+/* ===== Tags de tecnologias ===== */
+.tags {
+    margin: 10px 0 20px;
+}
+
+.tags span {
+    display: inline-block;
+    background-color: #1a0e24;
+    color: #ff6ec7;
+    border: 1px solid #a020f0;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    transition: all 0.25s ease;
+}
+
+.tags span:hover {
+    background-color: #a020f0;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(160, 32, 240, 0.8);
+}
+
+/* ===== Card "em breve" (Projeto 3) ===== */
+.card {
+    background-color: #14071a;
+    border: 2px dashed #a020f0;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 25px rgba(160, 32, 240, 0.5);
+}
+
+.card h1 {
+    color: #e14eff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(225, 78, 255, 0.6);
+}
+
+.card p {
+    color: #cfc4d9;
+}
+
+.icone {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+/* ===== Contato e Login ===== */
+.contato {
+    text-align: center;
+}
+
+.email-button,
+.login-button {
+    background-color: transparent;
+    color: #e14eff;
+    border: 1px solid #e14eff;
+    margin-top: 10px;
+}
+
+.email-button:hover,
+.login-button:hover {
+    background-color: #e14eff;
+    color: #0a0a0f;
+    box-shadow: 0 0 15px rgba(225, 78, 255, 0.8);
+}
+
+/* ===== Rodapé ===== */
+footer {
+    background-color: #0d0611;
+    color: #a898b5;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: 40px;
+    border-top: 1px solid #2e0f3d;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
