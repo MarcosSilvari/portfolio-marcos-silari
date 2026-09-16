@@ -90,7 +90,7 @@ Depois acesse `http://localhost:5000/login` no navegador.
 
 ## 👤 Autor
 
-**Marcos Silari**
+**Marcos Silvari**
 Estudante de Análise e Desenvolvimento de Sistemas (ADS) — Cruzeiro do Sul
 
 ## 📄 Licença
