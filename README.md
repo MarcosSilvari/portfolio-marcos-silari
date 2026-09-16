@@ -1,6 +1,6 @@
 # 🌌 Portfólio — Marcos Silvari 
 
-Portfólio pessoal desenvolvido por **Marcos Silari**, estudante de **Análise e Desenvolvimento de Sistemas (ADS)** na **Cruzeiro do Sul**. O site reúne projetos práticos desenvolvidos ao longo do curso, com um visual escuro e neon (tons de roxo/magenta) e efeitos de brilho ao interagir com a interface.
+Portfólio pessoal desenvolvido por **Marcos Silvari**, estudante de **Análise e Desenvolvimento de Sistemas (ADS)** na **Cruzeiro do Sul**. O site reúne projetos práticos desenvolvidos ao longo do curso, com um visual escuro e neon (tons de roxo/magenta) e efeitos de brilho ao interagir com a interface.
 
 ## 🔗 Sobre o projeto
 
@@ -17,7 +17,7 @@ Este repositório contém o código-fonte do meu site de portfólio, construído
 ## 📁 Estrutura do projeto
 
 ```
-📦 portfolio-marcos-silari
+📦 portfolio-marcos-silvari
  ┣ 📜 index.html          → Página inicial (apresentação + lista de projetos)
  ┣ 📜 sobre.html           → Página sobre mim
  ┣ 📜 contato.html         → Página de contato
