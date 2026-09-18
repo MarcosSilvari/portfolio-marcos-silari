@@ -1,0 +1,265 @@
+ :root /* Define as cores do tema */{
+    --bg: #0a0a10;
+    --panel: #100e18;
+    --border: #26203a;
+    --text: #ece8f5;
+    --muted: #8b859e;
+    --magenta: #ff2ec4;
+    --purple: #8b5cf6;
+    --purple-deep: #6d28d9;
+  }
+ 
+  * { box-sizing: border-box; }
+ 
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+  }/* ---------- Layout ---------- */
+ 
+  body {
+    display: flex;
+    min-height: 100vh;
+  }/* ---------- Global ---------- */
+ 
+  /* ---------- Left: brand panel ---------- */
+  .brand {
+    position: relative;
+    flex: 1 1 46%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 30% 20%, rgba(139, 92, 246, 0.18), transparent 55%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 46, 196, 0.14), transparent 55%),
+                var(--panel);
+    border-right: 1px solid var(--border);
+  }/* ---------- Brand panel: glow effect ---------- */
+ 
+  .brand::before {
+    content: "";
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    top: -160px;
+    right: -160px;
+    background: conic-gradient(from 90deg, var(--purple), var(--magenta), var(--purple-deep), var(--purple));
+    filter: blur(90px);
+    opacity: 0.35;
+    animation: drift 14s ease-in-out infinite alternate;
+  }/* ---------- Brand panel: content ---------- */
+ 
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(-30px, 40px) scale(1.08); }
+  }
+ 
+  .brand-mark {
+    position: relative;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+  }
+ 
+  .brand-mark span { color: var(--magenta); }
+ 
+  .brand-copy {
+    position: relative;
+    max-width: 380px;
+  }
+ 
+  .brand-copy h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    margin: 0 0 16px;
+  }
+ 
+  .brand-copy p {
+    color: var(--muted);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+ 
+  .brand-foot {
+    position: relative;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+ 
+  /* ---------- Right: form panel ---------- */
+  .form-side {
+    flex: 1 1 54%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+ 
+  .form-wrap {
+    width: 100%;
+    max-width: 360px;
+  }
+ 
+  .form-wrap h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin: 0 0 8px;
+  }
+ 
+  .form-wrap .sub {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0 0 32px;
+  }
+ 
+  .field {
+    margin-bottom: 20px;
+  }
+ 
+  .field label {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+ 
+  .field input {
+    width: 100%;
+    padding: 12px 14px;
+    background: #14111e;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+ 
+  .field input::placeholder { color: #56506a; }
+ 
+  .field input:focus {
+    border-color: var(--magenta);
+    box-shadow: 0 0 0 3px rgba(255, 46, 196, 0.15), 0 0 18px rgba(255, 46, 196, 0.25);
+  }
+ 
+  .row-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.84rem;
+    margin: -6px 0 24px;
+  }
+ 
+  .row-between a {
+    color: var(--purple);
+    text-decoration: none;
+  }
+ 
+  .row-between a:hover { color: var(--magenta); }
+ 
+  .remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+  }
+ 
+  .remember input { accent-color: var(--magenta); }
+ 
+  .btn-primary {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--purple-deep), var(--magenta));
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: box-shadow 0.25s ease, transform 0.15s ease;
+    box-shadow: 0 0 0 rgba(255, 46, 196, 0);
+  }
+ 
+  .btn-primary:hover {
+    box-shadow: 0 0 24px rgba(255, 46, 196, 0.45), 0 0 6px rgba(139, 92, 246, 0.5);
+    transform: translateY(-1px);
+  }
+ 
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    margin: 28px 0;
+  }
+ 
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .signup {
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+ 
+  .signup a {
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid var(--purple);
+  }
+ 
+  .signup a:hover { color: var(--magenta); border-color: var(--magenta); }
+
+    .field-pass { position: relative; }
+ 
+  .toggle-pass {
+    position: absolute;
+    right: 12px;
+    top: 38px;
+    background: none;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    color: var(--muted);
+    font-size: 0.78rem;
+    cursor: pointer;
+    padding: 4px 6px;
+    font-family: 'Inter', sans-serif;
+    line-height: 1;
+  }
+ 
+  .toggle-pass:hover { color: var(--magenta); }
+ 
+  .field.has-error input {
+    border-color: #ff5470;
+    box-shadow: 0 0 0 3px rgba(255, 84, 112, 0.15);
+  }
+
+ 
+  @media (max-width: 860px) {
+    body { flex-direction: column; }
+    .brand { flex: none; padding: 32px; border-right: none; border-bottom: 1px solid var(--border); }
+    .brand-copy h1 { font-size: 1.8rem; }
+    .form-side { padding: 32px 24px; }
+  }
+ 
+  @media (prefers-reduced-motion: reduce) {
+    .brand::before { animation: none; }
+  }

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criar conta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+
+  <aside class="brand">
+    <div class="brand-mark">marcos<span>.</span>dev</div>
+    <div class="brand-copy">
+      <h1>Crie sua conta</h1>
+      <p>Cadastre um e-mail e uma senha para começar a usar o painel.</p>
+    </div>
+    <div class="brand-foot">Projeto 2 &middot; sistema de login</div>
+  </aside>
+
+  <main class="form-side">
+    <div class="form-wrap">
+      <h2>Cadastrar</h2>
+      <p class="sub">Leva menos de um minuto.</p>
+
+      <form id="cadastro-form" novalidate>
+        <div class="field" id="field-email">
+          <label for="email">E-mail</label>
+          <input id="email" type="email" placeholder="voce@email.com" autocomplete="email">
+          <div class="field-msg">Informe um e-mail válido.</div>
+        </div>
+
+        <div class="field" id="field-senha">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password">
+          <button type="button" class="toggle-pass" id="toggle-pass">mostrar</button>
+          <div class="field-msg">A senha precisa ter pelo menos 6 caracteres.</div>
+        </div>
+
+        <button class="btn-primary" type="submit" id="submit-btn">
+          <span class="btn-text">Criar conta</span>
+          <span class="spinner"></span>
+        </button>
+      </form>
+
+      <p class="signup">Já tem conta? <a href="login.html">Entrar</a></p>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // esconde as mensagens de erro assim que a página carrega
+    document.querySelectorAll('.field-msg').forEach((el) => { el.style.display = 'none'; });
+
+    // mostrar/ocultar senha
+    const senhaInput = document.getElementById('senha');
+    const togglePass = document.getElementById('toggle-pass');
+    togglePass.addEventListener('click', () => {
+      const isHidden = senhaInput.type === 'password';
+      senhaInput.type = isHidden ? 'text' : 'password';
+      togglePass.textContent = isHidden ? 'ocultar' : 'mostrar';
+    });
+
+    // toast
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    // validação
+    const form = document.getElementById('cadastro-form');
+    const emailField = document.getElementById('field-email');
+    const emailInput = document.getElementById('email');
+    const senhaField = document.getElementById('field-senha');
+    const submitBtn = document.getElementById('submit-btn');
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function setError(fieldEl, hasError) {
+      fieldEl.classList.toggle('has-error', hasError);
+      const msg = fieldEl.querySelector('.field-msg');
+      if (msg) msg.style.display = hasError ? 'block' : 'none';
+      if (hasError) {
+        fieldEl.classList.add('shake');
+        setTimeout(() => fieldEl.classList.remove('shake'), 350);
+      }
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const emailOk = isValidEmail(emailInput.value.trim());
+      const senhaOk = senhaInput.value.length >= 6;
+
+      setError(emailField, !emailOk);
+      setError(senhaField, !senhaOk);
+
+      if (!emailOk || !senhaOk) {
+        showToast('Verifique os campos destacados.');
+        return;
+      }
+
+      // Ainda não existe backend: isso só simula o envio.
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        showToast('Cadastro simulado — sem backend, nada foi salvo de verdade.');
+      }, 1000);
+    });
+
+    emailInput.addEventListener('input', () => setError(emailField, false));
+    senhaInput.addEventListener('input', () => setError(senhaField, false));
+
+    // brilho que segue o mouse
+    const brand = document.querySelector('.brand');
+    brand.addEventListener('mousemove', (e) => {
+      const rect = brand.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      brand.style.setProperty('--mx', x + '%');
+      brand.style.setProperty('--my', y + '%');
+    });
+  </script>
+
+</body>
+</html>
