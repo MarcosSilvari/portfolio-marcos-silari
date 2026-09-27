@@ -52,3 +52,9 @@ botaoAdicionar.addEventListener('click', function() {
 });
 
 tarefas.forEach(criarTarefaNaTela);
+
+inputTarefa.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        botaoAdicionar.click();
+    }
+});
