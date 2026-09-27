@@ -74,6 +74,17 @@
       toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
     }
 
+    // ---------- "Banco de dados" no localStorage ----------
+    // Guarda uma lista de usuários (e-mail + senha) direto no navegador.
+    function getUsuarios() {
+      const dados = localStorage.getItem('usuarios');
+      return dados ? JSON.parse(dados) : [];
+    }
+
+    function salvarUsuarios(lista) {
+      localStorage.setItem('usuarios', JSON.stringify(lista));
+    }
+
     // validação
     const form = document.getElementById('cadastro-form');
     const emailField = document.getElementById('field-email');
@@ -85,10 +96,13 @@
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     }
 
-    function setError(fieldEl, hasError) {
+    function setError(fieldEl, hasError, mensagem) {
       fieldEl.classList.toggle('has-error', hasError);
       const msg = fieldEl.querySelector('.field-msg');
-      if (msg) msg.style.display = hasError ? 'block' : 'none';
+      if (msg) {
+        if (mensagem) msg.textContent = mensagem;
+        msg.style.display = hasError ? 'block' : 'none';
+      }
       if (hasError) {
         fieldEl.classList.add('shake');
         setTimeout(() => fieldEl.classList.remove('shake'), 350);
@@ -109,14 +123,31 @@
         return;
       }
 
-      // Ainda não existe backend: isso só simula o envio.
+      const email = emailInput.value.trim().toLowerCase();
+      const usuarios = getUsuarios();
+      const jaExiste = usuarios.some((u) => u.email === email);
+
+      if (jaExiste) {
+        setError(emailField, true, 'Esse e-mail já está cadastrado.');
+        showToast('Esse e-mail já está cadastrado.');
+        return;
+      }
+
+      // Sem backend: salva o usuário direto no localStorage do navegador.
       submitBtn.classList.add('loading');
       submitBtn.disabled = true;
 
       setTimeout(() => {
         submitBtn.classList.remove('loading');
         submitBtn.disabled = false;
-        showToast('Cadastro simulado — sem backend, nada foi salvo de verdade.');
+
+        usuarios.push({ email, senha: senhaInput.value });
+        salvarUsuarios(usuarios);
+
+        showToast('Conta criada! Redirecionando para o login...');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1200);
       }, 1000);
     });
 

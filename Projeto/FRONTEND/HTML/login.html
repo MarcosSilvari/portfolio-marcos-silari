@@ -55,6 +55,13 @@
   <div class="toast" id="toast"></div><!-- mensagem temporária -->
 
 <script>
+    // ---------- "Banco de dados" no localStorage ----------
+    // Sem backend: lê os usuários que foram salvos na tela de cadastro.
+    function getUsuarios() {
+      const dados = localStorage.getItem('usuarios');
+      return dados ? JSON.parse(dados) : [];
+    }
+
     document.querySelectorAll('.field-msg').forEach((el) => {// seleciona todas as mensagens de erro
         el.style.display = 'none';// esconde mensagens de erro inicialmente
     }); // esconde mensagens de erro inicialmente
@@ -113,16 +120,30 @@
         return;
       }// se houver erros, exibe uma mensagem de aviso e não prossegue com o "login"
  
-      // Simula uma chamada de login (sem backend real)
+      // Verifica as credenciais fixas (sem backend/banco de dados)
       submitBtn.classList.add('loading');// adiciona o estado de carregamento do botão
       submitBtn.disabled = true;// adiciona o estado de carregamento do botão
  
       setTimeout(() => {
         submitBtn.classList.remove('loading');// remove o estado de carregamento do botão
         submitBtn.disabled = false;// remove o estado de carregamento do botão
-        showToast('Login simulado com sucesso — conecte ao backend para autenticar de verdade.');// exibe uma mensagem de sucesso após o "login"
-      }, 1100);// simula um atraso de 1,1 segundos para o "login"
-    }); // impede o envio do formulário e valida os campos, simulando um login com feedback visual
+
+        const email = emailInput.value.trim().toLowerCase();
+        const usuarios = getUsuarios();
+        const usuario = usuarios.find((u) => u.email === email && u.senha === senhaInput.value);
+
+        if (usuario) {
+          // Guarda que o usuário está "logado" enquanto a aba estiver aberta
+          sessionStorage.setItem('logado', 'true');
+          sessionStorage.setItem('usuarioLogado', usuario.email);
+          window.location.href = 'index.html';
+        } else {
+          setError(emailField, true);
+          setError(senhaField, true);
+          showToast('E-mail ou senha incorretos. Cadastre-se primeiro se ainda não tem conta.');
+        }
+      }, 1100);// simula um pequeno atraso, como se estivesse validando
+    }); // valida os campos, checa as credenciais fixas e redireciona se estiver tudo certo
  
     // limpa erro ao digitar de novo
     emailInput.addEventListener('input', () => setError(emailField, false)); // remove a classe de erro do campo de e-mail ao digitar

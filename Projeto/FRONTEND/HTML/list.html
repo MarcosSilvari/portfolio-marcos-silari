@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="FRONTEND/CSS/list.css">
+</head>
+<body>
+    <header>
+        <h1>PORTFÓLIO SILVARI</h1> <!-- título do portfólio -->
+        <nav>
+            <ul><!-- menu de navegação -->
+                <li><a href="index.html">Home</a></li>
+                <li><a href="list.html">Lista de Tarefas</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="login.html"><button>Entrar</button></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="list">
+    <div class="card">
+        <h1>Lista de Tarefas</h1>
+       <div class="input-container">
+        <input type="text" id="input-tarefas">
+        <button id="botao-adicionar">Adicionar</button>
+        </div>
+        <ul id="tarefas" class="caixa-list"></ul>
+    </div>
+    </section>
+    <script src="FRONTEND/JS/list.js"></script>
+</body>
+</html>
