@@ -205,10 +205,10 @@ button:hover {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    gap: 40px;
+    gap: 50px;
 }
 
-/* esconde a imagem enquanto o src estiver vazio */
+
 #img {
     width: 100%;
     max-width: 380px;

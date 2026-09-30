@@ -147,7 +147,7 @@ nav ul li a:hover {
 
 /* submenu escondido */
 .submenu {
-    display: none;
+  
     position: absolute;
     top: 100%;
     left: 0;
@@ -159,6 +159,19 @@ nav ul li a:hover {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(224, 64, 251, 0.3);
     z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+   
+}
+
+.dropdown:hover .submenu,
+.dropdown:focus-within .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+
 }
 
 /* aparece ao passar o mouse no li pai */
