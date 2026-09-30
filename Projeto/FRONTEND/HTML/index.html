@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="FRONTEND/CSS/style.css">
 </head>
 <body>
     <header>
@@ -12,7 +12,13 @@
         <nav>
             <ul><!-- menu de navegação -->
                 <li><a href="index.html">Home</a></li>
-                <li><a href="list.html">Lista de Tarefas</a></li>
+                <li class="dropdown">
+                    <a href="#">Projetos ▾</a>
+                    <ul class="submenu">
+                        <li><a href="list.html">Lista de tarefa</a></li>
+                        <li><a href="imc.html">Calculadora de IMC</a></li>
+                    </ul>
+                </li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="contato.html">Contato</a></li>
                 <li><a href="login.html"><button>Entrar</button></a></li>
@@ -196,14 +202,14 @@
             <h2>Contato</h2>
             <p>Entre em contato comigo através do formulário de contato.</p>
             <p>Ou clique no botão abaixo para enviar um e-mail.</p>
-            <button class="email-button" onclick="window.location.href='mailto:meuemail@exemplo.com'">Enviar E-mail</button>
+            <button class="email-button" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=marcossilvarisantos972@gmail.com', '_blank')">Enviar E-mail</button>
 
         </section><!-- seção de contato -->
         <section><!-- seção de login -->
             <h2>Login</h2>
             <p>Faça login para acessar recursos exclusivos.</p>
             <p>Ou clique no botão abaixo para ir para a página de login.</p>
-            <button class="login-button" onclick="window.location.href='Projeto/FRONTEND/HTML/login.html'">Ir para Login</button>
+            <button class="login-button" onclick="window.location.href='login.html'">Ir para Login</button>
         </section><!-- seção de login -->
     </main><!-- conteúdo principal -->
     <footer><!-- rodapé -->

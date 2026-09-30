@@ -1,0 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0d0b14;
+    color: #eee;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(160, 32, 240, 0.25), transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(225, 78, 255, 0.2), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(80, 6, 87, 0.4), transparent 50%),
+        linear-gradient(180deg, #0a0316 0%, #14071a 50%, #0a0316 100%);
+}
+
+/* ===== Camada de estrelas (pontinhos brilhantes) ===== */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image:
+        radial-gradient(2px 2px at 10% 15%, #ffffff 100%, transparent 0),
+        radial-gradient(1.5px 1.5px at 30% 40%, #e14eff 100%, transparent 0),
+        radial-gradient(2px 2px at 50% 10%, #ffffff 100%, transparent 0),
+        radial-gradient(1px 1px at 70% 60%, #ffffff 100%, transparent 0),
+        radial-gradient(2px 2px at 85% 25%, #e14eff 100%, transparent 0),
+        radial-gradient(1.5px 1.5px at 15% 70%, #ffffff 100%, transparent 0),
+        radial-gradient(1px 1px at 40% 85%, #ffffff 100%, transparent 0),
+        radial-gradient(2px 2px at 60% 50%, #ffffff 100%, transparent 0),
+        radial-gradient(1.5px 1.5px at 90% 75%, #e14eff 100%, transparent 0),
+        radial-gradient(1px 1px at 25% 90%, #ffffff 100%, transparent 0),
+        radial-gradient(2px 2px at 95% 45%, #ffffff 100%, transparent 0),
+        radial-gradient(1.5px 1.5px at 5% 50%, #ffffff 100%, transparent 0);
+    background-repeat: repeat;
+    background-size: 100% 100%;
+    animation: piscar 4s ease-in-out infinite alternate;
+    opacity: 0.8;
+}
+
+@keyframes piscar {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0316;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a020f0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e14eff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Header e navegação ===== */
+header {
+    background-color: rgba(20, 7, 26, 0.15);
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    cursor: pointer;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+header:hover,
+header.ativo {
+    background-color: #14071a;
+    border-bottom: 1px solid #a020f0;
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
+}
+
+header h1 {
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: #e14eff;
+    text-shadow: 0 0 8px rgba(225, 78, 255, 0.6);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #f0eaf5;
+    text-decoration: none;
+    font-size: 21px;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+nav ul li a:hover {
+    color: #e14eff;
+    text-shadow: 0 0 10px rgba(225, 78, 255, 0.9);
+}
+
+.dropdown {
+    position: relative;
+}
+
+/* submenu escondido */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    padding: 0;
+    list-style: none;
+    background: #1a1626;
+    border: 1px solid #4a3a6a;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(224, 64, 251, 0.3);
+    z-index: 10;
+}
+
+/* aparece ao passar o mouse no li pai */
+.dropdown:hover .submenu {
+    display: block;
+}
+
+/* itens do submenu um embaixo do outro */
+.submenu li {
+    display: block;
+}
+
+.submenu a {
+    display: block;
+    padding: 12px 16px;
+    white-space: nowrap;
+}
+
+.submenu a:hover {
+    color: #e040fb;
+    text-shadow: 0 0 8px rgba(224, 64, 251, 0.6);
+}
+
+button {
+    background-color: transparent;
+    color: #e14eff;
+    border: 1px solid #e14eff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background-color: #e14eff;
+    color: #0a0a0f;
+    box-shadow: 0 0 15px rgba(225, 78, 255, 0.8);
+}
+
+
+#container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 40px;
+}
+
+/* esconde a imagem enquanto o src estiver vazio */
+#img {
+    width: 100%;
+    max-width: 380px;
+}
+
+#img img {
+    width: 100%;
+    height: 100%;
+    max-height: 520px;
+    object-fit: cover;
+
+}
+
+@media (max-width: 800px) {
+    #container {
+        flex-direction: column;
+    }
+
+    #img img {
+        max-height: 250px;
+    }
+}
+
+/* ícones dentro dos inputs */
+.input-field i,
+.input-field svg,
+.input-field img {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: #b388ff;
+    fill: #b388ff;
+    flex-shrink: 0;
+}
+
+/* ícone do link "mais informações" */
+#mais-info i,
+#mais-info svg,
+#mais-info img {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    color: #b388ff;
+    fill: #b388ff;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+#calcular {
+    width: 100%;
+    max-width: 380px;
+    background: #1a1626;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(180, 60, 255, 0.25);
+}
+
+h1 {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #d38bff;
+}
+
+.input-box {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #0d0b14;
+    border: 1px solid #4a3a6a;
+    border-radius: 8px;
+    padding: 0 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field:focus-within {
+    border-color: #e040fb;
+    box-shadow: 0 0 10px rgba(224, 64, 251, 0.5);
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 12px 0;
+    font-size: 1rem;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+button.calcular {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #8e2de2, #e040fb);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#info {
+    margin-top: 24px;
+}
+
+#resultado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    background: #0d0b14;
+    border: 1px solid #4a3a6a;
+    border-radius: 12px;
+    box-shadow: inset 0 0 20px rgba(142, 45, 226, 0.15);
+}
+
+/* só aparece depois de calcular */
+#resultado:has(#values:empty) {
+    display: none;
+}
+
+#imc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+#values {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #e040fb;
+    text-shadow: 0 0 15px rgba(224, 64, 251, 0.7);
+}
+
+#imc span:last-child {
+    margin-top: 8px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9a8bb5;
+}
+
+#descricao span {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(224, 64, 251, 0.15);
+    border: 1px solid #e040fb;
+    color: #f3c6ff;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+#mais-info {
+    margin-top: 16px;
+    text-align: center;
+}
+
+#mais-info a {
+    color: #b388ff;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+#mais-info a:hover {
+    color: #e040fb;
+    text-shadow: 0 0 8px rgba(224, 64, 251, 0.6);
+}

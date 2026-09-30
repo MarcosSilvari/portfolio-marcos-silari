@@ -19,6 +19,27 @@
     font-family: 'Inter', sans-serif;
   }
 
+  ::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0316;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a020f0;
+    border-radius: 10px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e14eff;
+}
+
   body { display: flex; min-height: 100vh; }
 
   .brand {

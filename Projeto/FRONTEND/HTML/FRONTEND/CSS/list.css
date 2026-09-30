@@ -76,6 +76,27 @@ body::after {
     }
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0316;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a020f0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e14eff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 /* ===== Header e navegação ===== */
 header {
     background-color: rgba(20, 7, 26, 0.15);
@@ -126,6 +147,59 @@ nav ul li a {
 nav ul li a:hover {
     color: #e14eff;
     text-shadow: 0 0 10px rgba(225, 78, 255, 0.9);
+}
+
+.dropdown {
+    position: relative;
+}
+
+/* submenu escondido */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    padding: 0;
+    list-style: none;
+    background: #1a1626;
+    border: 1px solid #4a3a6a;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(224, 64, 251, 0.3);
+    z-index: 10;
+}
+
+/* aparece ao passar o mouse no li pai */
+.dropdown:hover .submenu {
+    display: block;
+}
+
+/* itens do submenu um embaixo do outro */
+.submenu li {
+    display: block;
+}
+
+.submenu a {
+    display: block;
+    padding: 12px 16px;
+    white-space: nowrap;
+}
+
+.submenu a:hover {
+    color: #e040fb;
+    text-shadow: 0 0 8px rgba(224, 64, 251, 0.6);
+}
+
+button {
+    background-color: transparent;
+    color: #e14eff;
+    border: 1px solid #e14eff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all 0.25s ease;
 }
 
 /* ===== Botões (gerais) ===== */

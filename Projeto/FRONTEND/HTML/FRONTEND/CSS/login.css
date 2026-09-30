@@ -18,6 +18,27 @@
     color: var(--text);
     font-family: 'Inter', sans-serif;
   }/* ---------- Layout ---------- */
+
+  ::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0316;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a020f0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e14eff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
  
   body {
     display: flex;
