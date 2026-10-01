@@ -1,27 +1,15 @@
-:root {
-    --bg: #0a0a0f;
-    --card-bg: #14141f;
-    --neon-purple: #a855f7;
-    --neon-magenta: #ff2ec4;
-    --text: #f0f0f5;
-    --text-muted: #9a9aad;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ===== Fundo estrelado (substitui o background-color do body) ===== */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #f0eaf5;
-    line-height: 1.6;
-    position: relative;
-    min-height: 100vh;
-    background-color: #0a0316;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0d0b14;
+    color: #eee;
     overflow-x: hidden;
+
 }
 
 body::before {
@@ -69,7 +57,7 @@ body::after {
 
 @keyframes piscar {
     from {
-        opacity: 0.2;
+        opacity: 0.5;
     }
     to {
         opacity: 1;
@@ -214,214 +202,114 @@ button {
     transition: all 0.25s ease;
 }
 
-/* ===== Botões (gerais) ===== */
-button {
-    background-color: transparent;
-    color: #e14eff;
-    border: 1px solid #e14eff;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-    transition: all 0.25s ease;
-}
-
 button:hover {
     background-color: #e14eff;
     color: #0a0a0f;
     box-shadow: 0 0 15px rgba(225, 78, 255, 0.8);
 }
 
-
-.list{ 
-    margin: 0;
-    color: var(--text);
+/* imagem + card lado a lado, centralizados */
+#container {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center; 
-    padding: 40px 16px;
-    min-height: 100vh;
-}
-/* Container principal centralizado */
-.container {
-    background: var(--card-bg);
-    border: 1px solid #2a2a40;
-    border-radius: 12px;
-    padding: 24px;
-    max-width: 380px;
-    width: 100%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
 }
 
-
-.card{
-    background: transparent;
-    backdrop-filter: blur(10px);
-    border: 1px solid #2a2a40;
-    border-radius: 12px;
-    padding: 24px;
-    max-width: 500px;
+/* ===== Imagem ===== */
+#img {
     width: 100%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    max-width: 420px;
 }
+
+#img img {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
+}
+
+/* ===== Card do formulário ===== */
+#formulario {
+    width: 100%;
+    max-width: 400px;
+    background: #1a1626;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(160, 32, 240, 0.3);
+}
+
 h1 {
-    color: white;
-    text-shadow: 0 0 8px var(--neon-purple), 0 0 18px var(--neon-magenta);
     text-align: center;
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 50px;
+    font-size: 30px;
+    margin-bottom: 24px;
+    color: #e14eff;
+    text-shadow: 0 0 8px rgba(225, 78, 255, 0.6);
 }
 
-input[type="text"] {
-    background: #1c1c2b;
-    border: 1px solid #333350;
-    border-radius: 8px;
-    padding: 12px;
-    color: var(--text);
-    outline: none;
-    width: 100%;
-    margin-bottom: 12px;
-    transition: box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-input[type="text"]:focus {
-    border-color: #e14eff;
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
-}
-
-/* Botão principal de adicionar */
-button#botao-adicionar, 
-.container > button {
-    width: 100%;
-    background: linear-gradient(135deg, var(--neon-purple), var(--neon-magenta));
-    border: none;
-    border-radius: 8px;
-    padding: 12px 16px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: box-shadow 0.25s ease, transform 0.15s ease;
-}
-
-button#botao-adicionar:hover, 
-.container > button:hover {
-    box-shadow: 0 0 14px var(--neon-purple), 0 0 26px var(--neon-magenta);
-    transform: translateY(-1px);
-}
-
-ul#tarefas {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0 0 0;
+form {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-ul#tarefas li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #1c1c2b;
-    border: 1px solid #2a2a40;
+label {
+    font-size: 0.9rem;
+}
+
+input {
+    background: #0d0b14;
+    border: 1px solid #4a3a6a;
     border-radius: 8px;
-    padding: 10px 14px;
+    padding: 12px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    border-color: #e14eff;
+    box-shadow: 0 0 10px rgba(225, 78, 255, 0.5);
+}
+
+button {
+    margin-top: 6px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #8e2de2, #e14eff);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    transition: box-shadow 0.2s, transform 0.2s;
 }
 
-ul#tarefas li:hover {
-    border-color: var(--neon-purple);
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+button:hover {
+    box-shadow: 0 0 16px #e14eff;
+    transform: translateY(-2px);
 }
 
-/* Tarefa concluída */
-ul#tarefas li.concluida {
-    text-decoration: line-through;
-    color: var(--text-muted);
-    opacity: 0.6;
-}
-
-/* Botão de excluir dentro da lista */
-ul#tarefas li button {
-    width: auto;
-    background: #31063cad;
-    border: 1px solid var(--neon-magenta);
-    color: var(--neon-magenta);
-    padding: 4px 10px;
-    font-size: 0.8em;
-    box-shadow: none;
-}
-
-ul#tarefas li button:hover {
-    box-shadow: 0 0 8px var(--neon-magenta);
-    transform: none;
-}
-
-ul.caixa-list {
-    list-style: none;
-    background: var(--box-bg);
-    border: 1px solid #31314a;
-    border-radius: 12px;
+/* ===== Resultado ===== */
+#info {
+    margin-top: 24px;
     padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-height: 100px; /* Mantém o formato de caixa mesmo vazia */
-    max-height: 300px; /* Permite rolagem se tiver muitas tarefas */
-    overflow-y: auto;
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+    background: #0d0b14;
+    border: 1px solid #4a3a6a;
+    border-radius: 12px;
 }
 
-/* Personalização da barra de rolagem (Scrollbar) */
-ul.caixa-list::-webkit-scrollbar {
-    width: 6px;
-}
-ul.caixa-list::-webkit-scrollbar-thumb {
-    background: var(--neon-purple);
-    border-radius: 4px;
+#info p {
+    margin: 6px 0;
+    color: #9a8bb5;
 }
 
-/* Itens de Tarefa dentro da Caixa */
-ul.caixa-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--item-bg);
-    border: 1px solid #2e2e48;
-    border-radius: 8px;
-    padding: 10px 14px;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-ul.caixa-list li:hover {
-    border-color: var(--neon-purple);
-    box-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
-}
-
-/* Tarefa Concluída */
-ul.caixa-list li.concluida {
-    text-decoration: line-through;
-    color: var(--text-muted);
-    opacity: 0.6;
-}
-
-/* Botão Excluir */
-ul.caixa-list li button {
-    background: transparent;
-    border: 1px solid var(--neon-magenta);
-    color: var(--neon-magenta);
-    padding: 6px 12px;
-    font-size: 0.8em;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: box-shadow 0.25s ease;
-}
-
-ul.caixa-list li button:hover {
-    box-shadow: 0 0 8px var(--neon-magenta);
+#info span {
+    color: #f3c6ff;
+    font-weight: 600;
 }
 
 footer {

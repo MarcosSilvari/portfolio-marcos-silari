@@ -59,7 +59,7 @@ body::after {
 
 @keyframes piscar {
     from {
-        opacity: 0.5;
+        opacity: 0.2;
     }
     to {
         opacity: 1;
@@ -412,4 +412,27 @@ button.calcular {
 #mais-info a:hover {
     color: #e040fb;
     text-shadow: 0 0 8px rgba(224, 64, 251, 0.6);
+}
+
+footer {
+    background-color: #0d0611;
+    color: #a898b5;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: 40px;
+    border-top: 1px solid #2e0f3d;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }

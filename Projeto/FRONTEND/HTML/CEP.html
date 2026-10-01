@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de CEP</title>
+    <link rel="stylesheet" href="FRONTEND/CSS/cep.css">
+</head>
+<body>
+     <header>
+        <h1>PORTFÓLIO SILVARI</h1> <!-- título do portfólio -->
+        <nav>
+            <ul><!-- menu de navegação -->
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Projetos ▾</a>
+                        <ul class="submenu">
+                            <li><a href="list.html">Lista de tarefa</a></li>
+                            <li><a href="imc.html">Calculadora de IMC</a></li>
+                            <li><a href="cep.html">Buscador de CEP</a></li>
+                        </ul>
+                </li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="login.html"><button>Entrar</button></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="container">
+        <section id="img">
+            <img src="Assests/undraw_map-dark_g9xq.svg" alt="">
+        </section>
+        <section id="formulario">
+            <h1>Buscador de CEP</h1>
+            <form id="Form">
+                <label for="cep">Digite o CEP:</label>
+                <input type="text" id="cep" name="cep" maxlength="9" placeholder="01001-000" required>
+                <button type="submit">Buscar</button>
+            </form>
+       
+        <div id="info">
+            <p><span id="resultado"></span></p>
+            <p>Rua: <span id="rua"></span></p>
+            <p>Bairro: <span id="bairro"></span></p>
+            <p>Cidade: <span id="cidade"></span></p>
+            <p>UF: <span id="uf"></span></p>
+        </div>
+         </section>
+    </main>
+    <footer><!-- rodapé -->
+        <p>&copy; 2026 Meu Portfólio. Todos os direitos reservados.</p>
+    </footer>
+    <script src="FRONTEND/JS/cep.js"></script>
+</body>
+</html>
